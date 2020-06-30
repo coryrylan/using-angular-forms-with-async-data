@@ -1,0 +1,26 @@
+<p>
+  <a href="https://coryrylan.com/blog/using-angular-forms-with-async-data">Using Angular Forms with Async Data</a>
+</p>
+
+<form *ngIf="user | async; else loading" [formGroup]="form" (ngSubmit)="submit()">
+  <label for="firstname">First Name</label>
+  <input id="firstname" formControlName="firstName" />
+  <div *ngIf="form.controls.firstName.errors?.required && form.controls.firstName.touched" class="error">
+    *Required
+  </div>
+
+  <label for="lastname">Last Name</label>
+  <input id="lastname" formControlName="lastName" />
+  <div *ngIf="form.controls.lastName.errors?.required && form.controls.lastName.touched" class="error">
+    *Required
+  </div>
+
+  <label for="about">About</label>
+  <textarea id="about" formControlName="about"></textarea>
+
+  <button [disabled]="!form.valid">Save Profile</button>
+</form>
+
+<ng-template #loading>
+  Loading User...
+</ng-template>
