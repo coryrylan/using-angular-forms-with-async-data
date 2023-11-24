@@ -1,18 +1,22 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 import { UserService, User } from './user.service';
 
 @Component({
-  selector: 'my-app',
+  standalone: true,
+  providers: [UserService],
+  imports: [CommonModule, ReactiveFormsModule],
+  selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  form: FormGroup;
-  user: Observable<User>;
+  form!: FormGroup;
+  user!: Observable<User>;
 
   constructor(
     private formBuilder: FormBuilder,
