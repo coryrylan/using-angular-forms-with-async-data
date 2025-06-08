@@ -1,1 +1,14 @@
-/* Add application styles & imports to this file! */
+p {
+    font-family: Lato;
+}
+
+input,
+textarea {
+    display: block;
+    margin-bottom: 12px;
+}
+
+.error {
+    color: red;
+    margin-bottom: 6px;
+}
